@@ -1,0 +1,88 @@
+/*-----------------------------------------------------------------------------------
+	mixins.less
+-----------------------------------------------------------------------------------*/
+
+
+
+.size(@width; @height) {
+	width: @width;
+	height: @height;
+}
+
+.square(@size) {
+	.size(@size; @size);
+}
+
+
+/* Portfolio Item Size Builder
+-----------------------------------------------------------------*/
+
+.portfolio-builder(@container, @columns, @margin) {
+	@width: floor( ( @container - ( @margin * ( @columns - 1 ) ) ) / @columns );
+	@height: floor( ( @width * 3 ) / 4 );
+}
+
+.portfolio-item-width(@container; @columns; @margin) {
+	.portfolio-builder(@container, @columns, @margin);
+	width: @width;
+}
+
+.portfolio-item-size(@container; @columns; @margin) {
+	.portfolio-builder(@container, @columns, @margin);
+	.size(@width; @height);
+}
+
+
+/* Shop Item Size Builder
+-----------------------------------------------------------------*/
+
+.shop-builder(@container, @columns, @margin) {
+	@width: floor( ( @container - ( @margin * ( @columns - 1 ) ) ) / @columns );
+	@height: floor( ( @width * 4 ) / 3 );
+}
+
+.shop-item-width(@container; @columns; @margin) {
+	.shop-builder(@container, @columns, @margin);
+	width: @width;
+}
+
+.shop-item-height(@container; @columns; @margin) {
+	.shop-builder(@container, @columns, @margin);
+	height: @height;
+}
+
+
+/* Other Mixins
+-----------------------------------------------------------------*/
+
+.border-radius(@radius: 3px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+}
+
+.border-radius-custom(@topleft: 3px, @topright: 3px, @bottomright: 3px, @bottomleft: 3px) {
+	-webkit-border-radius: @topleft @topright @bottomright @bottomleft;
+	-moz-border-radius: @topleft @topright @bottomright @bottomleft;
+	border-radius: @topleft @topright @bottomright @bottomleft;
+}
+
+.box-shadow(@shadow) {
+	-webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+	-moz-box-shadow: @shadow;
+	box-shadow: @shadow;
+}
+
+.transition(@transition) {
+	-webkit-transition: @transition;
+	-o-transition: @transition;
+	transition: @transition;
+}
+
+.transition-transform(@transition) {
+	-webkit-transition: -webkit-transform @transition;
+	-moz-transition: -moz-transform @transition;
+	-o-transition: -o-transform @transition;
+	transition: transform @transition;
+}
+
